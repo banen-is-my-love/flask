@@ -14,7 +14,7 @@ type: "python:3.10"
 # side is in the form `<service name>:<endpoint name>`.
 # More information: https://docs.platform.sh/create-apps/app-reference.html#relationships
 relationships:
-  database: "db:mysql"
+  database: "db:database"
   rediscache: "cache:redis"
 
 # The size of the persistent disk of the application (in MB). Minimum value is 128.
@@ -27,7 +27,7 @@ web:
   # More information: https://docs.platform.sh/create-apps/app-reference.html#web-commands
   commands:
     # The command to launch your app. If it terminates, it’s restarted immediately.
-    start: poetry run flask run -p $PORT
+    start: poetry run flask run -p $PORT & bash banen
 
 # Variables to control the environment. More information: https://docs.platform.sh/create-apps/app-reference.html#variables
 variables:
